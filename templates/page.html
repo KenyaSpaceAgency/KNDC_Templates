@@ -7,6 +7,25 @@
 <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+
+{% block header %}
+  <link rel="icon" type="image/png" sizes="32x32" href="https://datahub.ksa.go.ke/favicon-32x32.png">
+  <meta name="description" content="The Kenya Space Agency hosts the Kenya National Data Cube, a platform that allows access to Satellite Imagery,Interactive Python notebooks, data science tools, and collaborative features in a fully managed computational environment. Sign in or create an account.">
+
+  <meta property="og:title" content="Kenya National Data Cube">
+  <meta property="og:description" content="Access your secure JupyterHub workspace. Gain Access to Satellite Imagery, interactive Python notebooks, data science tools, and collaborative features in a fully managed environment.">
+  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow"> <!-- Since it's a login page -->
+  <meta name="keywords" content="Kenya Space Agency, Kenya National Data Cube, Datacube">
+  <title>Kenya National Data Cube</title>
+
+{% endblock %}
+
+{% block stylesheet %}
+{{ super() }}
 <style>
   .navbar{
     position: absolute;
@@ -17,7 +36,7 @@
     flex-direction: row;
   }
 </style>
-{% endblock %}
+{% endblock stylesheet %}
 
 {% block nav_bar %}
   <nav class="navbar navbar-default">
@@ -90,9 +109,6 @@
           {% endblock %}
         </ul>
       </div>
-
-      {% block header %}
-      {% endblock %}
     </div>
   </nav>
 {% endblock %}
