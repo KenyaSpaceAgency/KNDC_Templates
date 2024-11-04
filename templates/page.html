@@ -15,33 +15,19 @@
 
 <style>
   .navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 32px;
-    display: flex;
-    flex-direction: row;
+    display: none;
   }
 </style>
 {% endblock stylesheet %}
 
 {% block nav_bar %}
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container-fluid">
-      <div class="navbar-header">
         {% block logo %}
         <span id="jupyterhub-logo" class="pull-left">
             <a href="https://ksa.go.ke"><img src='https://datahub.ksa.go.ke/static/media/Logo-accent.cac0851e.png' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
         </span>
         {% endblock %}
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
 
       <div class="collapse navbar-collapse" id="thenavbar">
         {% if user %}
@@ -73,14 +59,14 @@
 
         {# Start LibreTexts specific change #}
         {% else %}
-        <ul class="navbar navbar-nav">
+        <ul>
           <li><a href="{{base_url}}about">About</a></li>
           <li><a href="{{base_url}}faq">FAQ</a></li>
         </ul>
         {# End change #}
 
         {% endif %}
-        <ul class="nav navbar-nav navbar-right">
+        <ul>
           {% block nav_bar_right_items %}
             <li>
               {% block login_widget %}
