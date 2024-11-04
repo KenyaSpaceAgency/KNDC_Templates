@@ -1,6 +1,6 @@
 {% extends "templates/login.html" %}
 
-{% block title %}JupyterHub - Login{% endblock %}
+{% block title %}KNDC{% endblock %}
 
 {% block scripts %}
 
@@ -33,7 +33,6 @@
       {% endif %}
 
       {% block login %}
-        <h3>Login to JupyterHub</h3>
           {{ super() }}
         <p>
           <small>
@@ -88,7 +87,8 @@
 </div>
 {% endblock main %}
 
-
+{% block stylesheet %}
+{{ super() }}
 <style>
   :root {
             --primary-color: #3498db;
@@ -109,10 +109,6 @@
             min-height: 100vh;
             display: flex;
             background: var(--background-color);
-        }
-
-        .navbar{
-          display: none;
         }
 
         .main-container {
@@ -140,7 +136,7 @@
             overflow-y: scroll;
         }
 
-        .login-section .container {
+        .login-section .container{
           width: 100%;
         }
 

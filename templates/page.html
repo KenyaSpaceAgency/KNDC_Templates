@@ -11,16 +11,7 @@
 
 {% block stylesheet %}
 {{ super() }}
-<style>
-  .navbar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-  }
-</style>
+<link rel="stylesheet" href="{{ static_url("external/css/faq.css") }}" type="text/css"/>
 {% endblock stylesheet %}
 
 {% block nav_bar %}
