@@ -21,299 +21,308 @@
 {% endblock %}
 
 {% block main %}
-<div class="main-content container">
-  <div class="branding">
-    <div class="logos">
-      <a class="logo" href="https://libretexts.org" target="_blank">
-        <img src="/hub/static/external/images/libretexts_logo.png" alt="Libretexts" style="max-height:150px;max-width:100%;">
-      </a>
-      <a class="logo" href="https://ucdavis.edu" target="_blank" style="padding:20px;">
-        <img src="/hub/static/external/images/UCDavis_blue.png" alt="UC Davis" style="max-height:60px;max-width:100%;">
-      </a>
-      <a class="logo" href="https://www.ed.gov/news/press-releases/us-department-education-awards-49-million-grant-university-california-davis-develop-free-open-textbooks-program"
-          target="_blank">
-        <img class="sponsor" src="/hub/static/external/images/DOESeal.svg" alt="U.S. Department of Education">
-      </a>
-      <a class="logo" href="https://asucd.ucdavis.edu/" target="_blank">
-        <img class="sponsor" src="/hub/static/external/images/asucd-logo-color.png" alt="ASUCD">
-      </a>
-    </div>
+<div class="container">
+  <div class="login-section">
+      <img class="logo" src="https://datahub.ksa.go.ke/static/media/Logo-accent.cac0851e.png"/>
+      <h1>Kenya Space Agency</h1>
+      
+      {% if message %}
+      <div class="message {{ message_class if message_class else 'info' }}">
+          {{ message | safe }}
+      </div>
+      {% endif %}
+
+      {% block login %}
+      <div class="col-sm-4 left-col">
+        <div id="login-box">
+          <h3 align="center">Login to JupyterHub</h3>
+          {{ super() }}
+        </div>
+        <p>
+          <small>
+            This platform is created by the
+            <a href="https://ksa.go.ke"
+                target="_blank"> Kenya Space Agency
+            </a> and forms part of the 
+            <a href="https://ksa.go.ke" target="_blank">KSA Datahub</a>.
+          </small>
+        </p>
+      </div>
+      {% endblock login %}
+
+      {% if custom_html %}
+      {{ custom_html | safe }}
+      {% endif %}
+
+      {% if login_url %}
+      <div class="divider">
+          <span>Other options</span>
+      </div>
+      <div class="auth-buttons">
+          {% if signup_url %}
+          <a role="button" class="auth-provider" href="{{ signup_url }}">
+              Sign up for a new account
+          </a>
+          {% endif %}
+          
+          <a role="button" class="auth-provider" href="{{ login_url }}">
+              Sign in with a different account
+          </a>
+      </div>
+      {% endif %}
   </div>
 
-  {% block login %}
-  <div class="col-sm-4 left-col">
-    <div id="login-box">
-      <h3 align="center">Login to JupyterHub</h3>
-      {{ super() }}
-    </div>
-    <p>
-      <small>
-        Funded by the
-        <a href="https://www.ed.gov/news/press-releases/us-department-education-awards-49-million-grant-university-california-davis-develop-free-open-textbooks-program"
-            target="_blank"> Open Textbooks Pilot Program (CFDA No. 84.116T)
-        </a> from the U.S. Department of Education. Equipment and support provided by the
-        <a href="https://bioinformatics.ucdavis.edu/" target="_blank">UC Davis Genome Center Bioinformatics Core</a>.
-      </small>
-    </p>
+  <div class="info-section">
+      <h3>Welcome to the</h3>
+      <h2>Kenya National Data Cube</h2>
+      <span>Welcome to our JupyterHub environment. This platform provides:</span>
+      <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.6;">
+          <li>Interactive Python notebooks</li>
+          <li>Full computational environment</li>
+          <li>Access to data science tools</li>
+          <li>Collaborative features</li>
+      </ul>
 
-    <div class="sponsors row align-items-center justify-content-around flex-wrap"></div>
-  </div>
-  {% endblock login %}
-
-  <div class="container col-sm-7">
-    <h1>Welcome to the LibreTexts and UC Davis JupyterHub!</h1>
-    <p>This JupyterHub serves LibreTexts instructors and their students, as well as UC Davis faculty, staff, and students.</p>
-
-    <h2>Logging in to the Hub</h2>
-    <p>
-      If you are a UC Davis student or instructor, you may automatically login to the hub with your UC Davis email account. If you are part of LibreTexts then you can request an account by <a href="mailto:jupyterteam@ucdavis.edu">sending us</a> an email from a Google Authentication connected email address. LibreTexts affiliated student accounts should be requested by their instructors.
-    </p>
-
-    <h2 id="gettingstartedwithjupyter">Getting started with Jupyter</h2>
-    <p>
-      <a href="https://jupyter.org/index.html">Jupyter</a> is an environment where you can create interactive notebooks with code, visualizations, and more.
-    </p>
-
-    <p>Some resources to learn Jupyter:</p>
-    <ul>
-      <li>
-        <a href="https://jupyter.org/try">jupyter.org/try</a> has interactive demo notebooks in many different languages
-      </li>
-      <li>
-        <a href="https://github.com/Reproducible-Science-Curriculum/introduction-RR-Jupyter/blob/e5aece1011a43edfd739cbd83a2f4346091a86e2/notebooks/getting_started_with_jupyter_notebooks.ipynb"> Familiarize Yourself with Jupyter</a>, an example Jupyter Notebook tutorial on GitHub
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=DLWBfR2hxoo&amp;list=PLUrHeD2K9CmnCOjrnHzSIbZbZmDE-lQRt">Demo video</a> of how to navigate a Jupyter Notebook.
-      </li>
-      <li>
-        <a href="https://app.frame.io/reviews/7a3a3e89-63db-4f7d-a1db-c2a852275f75/b82343bc-f242-4f5e-87a3-5c89dd0408f4?version=e0ce5c2f-28f9-4eb2-988a-8988851aa881">Demo video</a> of how to navigate JupyterLab
-      </li>
-      <li>
-        Visit the <a href="https://jupyterlab.readthedocs.io/en/latest/user/interface.html">JupyterLab documentation</a> for more information on navigating the interface.
-      </li>
-    </ul>
-
-    <h2>Any questions?</h2>
-    <p>Please checkout our <a href="{{base_url}}faq">faq</a> page. If you can't find your question, feel free to email us at <a href="mailto:jupyterteam@ucdavis.edu">jupyterteam@ucdavis.edu</a>. For technical issues, open an issue on <a href="https://github.com/LibreTexts/metalc/issues" target="_blank">Github</a> and we will try to resolve it.</p>
+      {% if announcement_login %}
+      <div class="message info">
+          {{ announcement_login | safe }}
+      </div>
+      {% endif %}
   </div>
 </div>
-
 {% endblock main %}
 
 {% block stylesheet %}
 {{ super() }}
 <style>
-  .main-content {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --background-color: #f5f5f5;
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
+        }
 
-  .logos {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: auto 30px;
-    flex-wrap: nowrap;
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
 
-  .left-col {
-    margin-top: 20px;
-  }
+        body {
+            min-height: 100vh;
+            display: flex;
+            background: var(--background-color);
+        }
 
-  #libretexts {
-    max-height: 150px;
-  }
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            margin: auto;
+            padding: 20px;
+            gap: 40px;
+            background-image: url('https://images.unsplash.com/photo-1579818549693-04c7afca6318?q=80&w=4160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            overflow: hidden;
+        }
 
-  #ucdavis {
-    max-height: 60px;
-    padding: 10px;
-  }
+        .login-section {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 90vh;
+            margin: auto 0;
+            overflow-y: scroll;
+        }
 
-  .brand {
-    flex-shrink: 2;
-  }
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            text-align: center;
+            align-items: center;
+            background: none;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-  @media all and (max-width: 500px) {
-    .logos {
-      /* On small screens, we are no longer using row direction but column */
-      /* flex-direction: column; */
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .branding img {
-      justify-content: center;
-      max-width: 100%;
-    }
-  }
+        .info-section h2{
+            color: white;
+            margin: 40px auto;
+            margin-top: 0;
+            font-size: 3.5rem;
+        }
 
-  @media (max-width: 767px) {
-    .logos {
-      justify-content: space-around;
-    }
-    .logo {
-      flex-basis: 50%;
-    }
-  }
+        .info-section h3{
+            color: white;
+            margin: 4px auto;
+            margin-top: 10%;
+            font-size: 2rem;
+        }
 
-  @media (max-width: 1400px) {
-    .logos {
-      justify-content: space-around;
-    }
-    .main-content {
-      width: 100%;
-    }
-  }
+        .info-section span{
+            color: white;
+            font-size: large;
+            margin: 10px;
+        }
+        
+        .info-section li{
+            color: white;
+            text-align: left;
+        }
 
-  @media (min-width: 1401px) {
-    .main-content {
-      width: 1400px;
-    }
-  }
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
 
-  .sponsors {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
 
-  .sponsors-footer {
-    height: 300px;
-  }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
 
-  .sponsor {
-    padding: 10px;
-    max-width: 100%;
-    max-height: 150px;
-  }
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-  #login-box {
-    border: 1px solid silver;
-    padding: 10px;
-    margin-bottom: 30px;
-    /*   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    border-radius: 5px;
-    flex-grow: 2;
-  }
+        .auth-provider-label {
+            margin-bottom: 10px;
+            color: #666;
+        }
 
-  .body {
-    padding-bottom: 50px;
-  }
+        .auth-provider {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
 
-  #login-main .auth-form-body {
-    border-color: rgb(0, 124, 186);
-    color: white;
-  }
+        .auth-provider:hover {
+            background: #f8f9fa;
+            border-color: var(--primary-color);
+        }
 
-  #login-main {
-    margin-top: 5%;
-    height: inherit;
-    width: inherit;
-    margin-bottom: 5%;
-  }
+        .auth-provider img {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+        }
 
-  #login-main .container {
-    width: 50%;
-  }
+        .input-group {
+            margin-bottom: 20px;
+        }
 
-  footer {
-    border-top: 1px solid silver;
-    padding: 10px;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-  }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
 
-  footer p {
-    margin: 0 auto 0 auto;
-    text-align: center;
-  }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
 
-  #login-main form {
-    vertical-align: top;
-  }
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
 
-  #login-main .auth-form-header {
-    color: white;
-    background: rgb(219, 170, 0);
-    border: 1px solid;
-    border-color: rgb(0, 124, 186);
-  }
+        .error-message {
+            color: var(--error-color);
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(231, 76, 60, 0.1);
+        }
 
-  #insecure-login-warning {
-    color: black;
-  }
+        .success-message {
+            color: var(--success-color);
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(46, 204, 113, 0.1);
+        }
 
-  .btn-jupyter.active,
-  .btn-jupyter:active,
-  .open>.dropdown-toggle.btn-jupyter {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #a88400;
-    border-color: #a88400;
-    outline-color: #a88400;
-  }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
 
-  #login-main .form-control:focus,
-  #login-main input[type=submit]:focus {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(219, 170, 0);
-    border-color: rgb(219, 170, 0);
-    outline-color: rgb(219, 170, 0);
-  }
+        button:hover {
+            background: var(--primary-dark);
+        }
 
-  .btn-jupyter {
-    color: #fff;
-    background-color: #F37524;
-    border-color: #E34F21;
-    padding: 10px;
-  }
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
 
-  .col-1 {
-    width: 8.33%;
-  }
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
 
-  .col-2 {
-    width: 16.66%;
-  }
+        .divider span {
+            padding: 0 10px;
+        }
 
-  .col-3 {
-    width: 25%;
-  }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
 
-  .col-4 {
-    width: 33.33%;
-  }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 6px;
+        }
 
-  .col-5 {
-    width: 41.66%;
-  }
-
-  .col-6 {
-    width: 50%;
-  }
-
-  .col-7 {
-    width: 58.33%;
-  }
-
-  .col-8 {
-    width: 66.66%;
-  }
-
-  .col-9 {
-    width: 75%;
-  }
-
-  .col-10 {
-    width: 83.33%;
-  }
-
-  .col-11 {
-    width: 91.66%;
-  }
-
-  .col-12 {
-    width: 100%;
-  }
+        .info {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+        }
 </style>
 {% endblock %}
