@@ -2,44 +2,30 @@
 
 {% block scripts %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://datahub.ksa.go.ke/favicon-32x32.png">
-  <meta name="description" content="The Kenya Space Agency hosts the Kenya National Data Cube, a platform that allows access to Satellite Imagery,Interactive Python notebooks, data science tools, and collaborative features in a fully managed computational environment. Sign in or create an account.">
-
-  <meta property="og:title" content="Kenya National Data Cube">
-  <meta property="og:description" content="Access your secure JupyterHub workspace. Gain Access to Satellite Imagery, interactive Python notebooks, data science tools, and collaborative features in a fully managed environment.">
-  <meta property="og:type" content="website">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow"> <!-- Since it's a login page -->
-  <meta name="keywords" content="Kenya Space Agency, Kenya National Data Cube, Datacube">
-  <title>Kenya National Data Cube</title>
-  <style>
-    .navbar{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      display: flex;
-      flex-direction: row;
-    }
-  </style>
-</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
-
+<styles>
+  .navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+  }
+</styles>
 {% endblock %}
 
 {% block nav_bar %}
-  <nav class="navbar">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         {% block logo %}
         <span id="jupyterhub-logo" class="pull-left">
-            <a href="https://ksa.go.ke"><img src='https://datahub.ksa.go.ke/static/media/Logo-accent.cac0851e.png' alt='ksa logo' class='jpy-logo' title='Home'/></a>
+            <a href="https://ksa.go.ke"><img src='https://datahub.ksa.go.ke/static/media/Logo-accent.cac0851e.png' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
         </span>
         {% endblock %}
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
@@ -80,7 +66,7 @@
 
         {# Start LibreTexts specific change #}
         {% else %}
-        <ul class="nav navbar-nav">
+        <ul class="navbar navbar-nav">
           <li><a href="{{base_url}}about">About</a></li>
           <li><a href="{{base_url}}faq">FAQ</a></li>
         </ul>
