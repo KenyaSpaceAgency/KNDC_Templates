@@ -2,7 +2,30 @@
 
 {% block scripts %}
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://datahub.ksa.go.ke/favicon-32x32.png">
+  <meta name="description" content="The Kenya Space Agency hosts the Kenya National Data Cube, a platform that allows access to Satellite Imagery,Interactive Python notebooks, data science tools, and collaborative features in a fully managed computational environment. Sign in or create an account.">
+
+  <meta property="og:title" content="Kenya National Data Cube">
+  <meta property="og:description" content="Access your secure JupyterHub workspace. Gain Access to Satellite Imagery, interactive Python notebooks, data science tools, and collaborative features in a fully managed environment.">
+  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow"> <!-- Since it's a login page -->
+  <meta name="keywords" content="Kenya Space Agency, Kenya National Data Cube, Datacube">
+  <title>Kenya National Data Cube</title>
+  <style>
+    .navbar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
+</head>
 
 <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
@@ -11,7 +34,7 @@
 {% endblock %}
 
 {% block nav_bar %}
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
         {% block logo %}
