@@ -12,6 +12,18 @@
 {% block stylesheet %}
 {{ super() }}
 <link rel="stylesheet" href="{{ static_url("external/css/faq.css") }}" type="text/css"/>
+
+<style>
+  .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+  }
+</style>
 {% endblock stylesheet %}
 
 {% block nav_bar %}
