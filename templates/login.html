@@ -33,11 +33,8 @@
       {% endif %}
 
       {% block login %}
-      <div class="col-sm-4 left-col">
-        <div id="login-box">
-          <h3 align="center">Login to JupyterHub</h3>
+        <h3>Login to JupyterHub</h3>
           {{ super() }}
-        </div>
         <p>
           <small>
             This platform is created by the
@@ -47,7 +44,6 @@
             <a href="https://ksa.go.ke" target="_blank">KSA Datahub</a>.
           </small>
         </p>
-      </div>
       {% endblock login %}
 
       {% if custom_html %}
