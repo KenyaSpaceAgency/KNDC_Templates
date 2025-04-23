@@ -1,8 +1,6 @@
 ## Which JupyterLab environment should I choose?
 
-After logging in to JupyterHub, you will be taken to a Server Options page where you may select your JupyterLab evironment. This will determine the languages, packages, and kernels available to you. You should continue with whichever option is selected by default unless you have a specific reason to do otherwise.
-
-Each Jupyterhub environment is a different [Docker image](https://docs.docker.com/glossary/#image) that contains all the packages, languages, and kernels you need. Docker images are basically snapshots of an entire computer system, so you are being served the exact same system state each time you boot a Jupyter environment, plus your personal files.
+After logging in to JupyterHub, you will be taken to a Server Options page where you may select your JupyterLab environment. This will determine the languages, packages, and kernels available to you. You should continue with whichever option is selected by default unless you have a specific reason to do otherwise.
 
 The **New Default Environment** is what most users should choose for general JupyterLab use. It is an updated version of what is now called **Legacy Default Environment**. In the new environment, all supported languages except for Octave and C++ have been upgraded. Depending on the language, some syntax might have changed, so be sure to test your code to see if it works on a newer version. Here's a list of all the languages we support and the version changes:
 
@@ -10,10 +8,6 @@ The **New Default Environment** is what most users should choose for general Jup
 | - | - | - |
 | Python | 3.6 | 3.7.8 |
 | R | 3.6.1 | 4.0.2 |
-| Julia | 1.1.0 | 1.5.1 |
-| Octave | 4.2.2 | 4.2.2 |
-| C++ (cling) | 0.6 | 0.6 |
-| SageMath | 8.1 | 9.1 |
 
 *Starting with R 4.0, there has been a [change to the behavior of data.frame() and read.table() calls](https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/index.html). To maintain compatibility with previous code, you will want to add a `stringsAsFactors=TRUE` parameter to each of your data.frame() and read.table() calls.*
 
@@ -76,8 +70,6 @@ Note that if you want to use your conda environment as a Jupyter notebook, you m
 | - | - |
 | Python | ipykernel |
 | R | r-irkernel |
-| C++ | xeus-cling |
-| Octave | octave_kernel |
 
 You may view all your created conda environments using `conda env list`. To remove an environment, use `conda env remove -n <your_env_name>`. For reference, all of your created conda environments are stored in `/home/jovyan/.conda/envs/`. You can learn more about [managing and creating conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) and [more conda commands](https://docs.conda.io/projects/conda/en/latest/commands.html) from the linked documentation.
 
@@ -89,23 +81,14 @@ Jupyter kernels process the code you type and display the results to Jupyter not
 
 Kernels have a runtime which is independent of any given notebook, console, or terminal, and you can find more about [managing kernels](https://jupyterlab.readthedocs.io/en/stable/user/running.html) from the official JupyterLab documentation. There is also a `Kernel` tab at the top of your JupyterLab which will let you easily shutdown/restart kernels. You generally should not have to worry about this, but it may be useful for certain debugging purposes. A full list of Jupyter Kernels is available [here](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels). If you'd like us to support any additional kernels, go ahead and [email us](mailto:jupyterteam@ucdavis.edu).
 
-## How do I restart my JupyterLab server?
+## How do I restart my JupyterLab?
 
-On LibreTexts/UC Davis JupyterHub, you spawn servers that provide you with JupyterLab software and you execute your code using kernels. If you are actively running code and something unexpected occurs, [restarting the kernel](https://jupyterlab.readthedocs.io/en/stable/user/running.html) can often be an easy solution. However, sometimes the problem may be deeper than that, especially if some of your files were incorrectly modified. In this case, it could be a good idea to restart your server. 
+On Kenya National Data Cube Sandbox, you spawn servers that provide you with JupyterLab software and you execute your code using kernels. If you are actively running code and something unexpected occurs, [restarting the kernel](https://jupyterlab.readthedocs.io/en/stable/user/running.html) can often be an easy solution. However, sometimes the problem may be deeper than that, especially if some of your files were incorrectly modified. In this case, it could be a good idea to restart your server. 
 
 Go to File->Hub Control Panel and you will be brought to a page with "Stop Server" and "My Server" buttons. Press Stop Server and you should see that that the My Server button will dim; this means that the server is stopping. When the server has stopped (this should take less than 15 seconds), the webpage will prompt you with a "Start My Server" option. Press it, launch the server, and then you will be brought back to the Server Options page. Proceed with the JupyterLab environment of your choice, and you will now have a fresh server.
 
-By default, your server will always shutdown after 1 hour of inactivity. All files which you wish to modify and save across restarts must be located in your `/home/jovyan` directory; files stored in other locations will not be saved. Think of these `/home/jovyan` user files as being stored in a cloud, and each time you start JupyterLab, we provide you with a brand new server which has downloaded your specific files. We backup these user files for disaster and recovery purposes, but you should preform your own backup service for version control as needed. For more technical information on how your files are stored, see the Jupyterhub for Kubernetes documentation [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/customizing/user-environment.html#about-user-storage-and-adding-files-to-it). 
+By default, your server will always shutdown after 1 hour of inactivity. All files which you wish to modify and save across restarts must be located in your `/home/jovyan` directory; files stored in other locations will not be saved. Think of these `/home/jovyan` user files as being stored in a cloud, and each time you start JupyterLab, we provide you with a brand new server which has downloaded your specific files. We backup these user files for disaster and recovery purposes, but you should preform your own backup service for version control as needed.
 
-## Can I recieve accouncements for downtime and other critical information about LibreTexts/UC Davis JupyterHub?
-
-If you wish to recieve updates from the JupyterTeam about possible downtime for LibreTexts/UC Davis JupyterHub, you can subscribe to our [mailing list](https://lists.ucdavis.edu/sympa/subscribe/flock-announce). Just enter your email and you will recieve emails whenever we notify Hub users about downtime and maintenance.
-
-# For instructors and their students
-
-## How do I distribute files to students?
-
-The easiest way to distribute files to students for use on JupyterHub is through [nbgitpuller](https://jupyterhub.github.io/nbgitpuller/index.html). Nbgitpuller works by creating a link which automatically pulls files from a git repository and downloads them to a student's JupyterHub account. Since we already have nbgitpuller installed, all you need to do is [create a github repository](https://github.com/new) containing all the files you would like to share, and then fill in the `Git Repository URL` section of the [nbgitpuller link generator](https://jupyterhub.github.io/nbgitpuller/link?hub=https://jupyter.libretexts.org&app=jupyterlab) with the URL of that online repository. Afterwards, simply share the generated link with your students and when they click on it, all of the files within the repository will be downloaded to their JupyterHub account. There are some nuances to the download process, so check [this page](https://jupyterhub.github.io/nbgitpuller/topic/automatic-merging.html) if you are experiencing unexpected problems. If you are uncertain how to create a github repository, you can try this [short tutorial](https://kbroman.org/github_tutorial/pages/init.html). If you have never used git before and don't feel comfortable learning, Google Drive also offers you a great way to share your files.
 
 ## How do I download/upload files to my account?
 - The simplest way to upload files is through the built-in tool. With the File Browser tab selected, click on the Upload Files button. This will open a prompt to select the desired file to upload.

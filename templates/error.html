@@ -24,9 +24,9 @@
 {{ super() }}
 {% if status_code == 403 %}
   <p><strong>It looks like you need to request an account!</strong></p>
-  <p>If you are a LibreTexts instructor or UC Davis affiliate, you can request an account by
-  <a href="mailto:sandbox@ksa.go.ke">sending us</a> an email from a Google Authentication connected email address.</p>
-  <p>LibreTexts affiliated student accounts should be requested by their instructors.</p>
+  <p>You can request an account by
+  <a href="mailto:sandbox@ksa.go.ke">sending us</a> an email from your email address.</p>
+  <p>We will respond within 2 working days</p>
 {% elif status_code == 400 %}
   <p>If your authentication has expired, please login again from <a href="/">the home page</a>.</p>
 {% else %}
